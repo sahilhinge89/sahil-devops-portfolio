@@ -1,0 +1,356 @@
+/*
+ * Tailwind v4 entry: config lives here, with no tailwind.config.js or PostCSS plugin.
+ * - Keep every @import in this top block, above @theme and the rest of the file. Install an
+ *   npm package before @importing its CSS. Never @import a remote URL (web fonts, CDN CSS): the
+ *   build resolves @import from the filesystem. Load those with a <link> in the head() of
+ *   src/routes/__root.tsx and name the family in a --font-* token in @theme inline below.
+ */
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * Design system definition.
+ *
+ * The design lives in this file: oklch color tokens on the shadcn variables
+ * (--background, --foreground, --primary, --secondary, --muted, --accent, ...) plus
+ * new tokens as needed, font tokens, and custom styles and animations.
+ *
+ * The @theme inline block maps CSS custom properties to Tailwind utility
+ * classes (e.g. --color-primary -> bg-primary, text-primary).
+ *
+ * The :root and .dark blocks define the actual color values using oklch.
+ * All colors MUST use oklch format.
+ *
+ * To add a new semantic color:
+ * 1. Add the variable to :root (light value) and .dark (dark value)
+ * 2. Register it in @theme inline as --color-<name>: var(--<name>)
+ */
+
+@theme inline {
+  --font-sans: "Manrope", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Sora", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ring-offset-background: var(--background);
+  --color-sky: var(--sky);
+  --color-sand: var(--sand);
+  --color-glass: var(--glass);
+  --color-glass-border: var(--glass-border);
+  --color-success: var(--success);
+  --color-opening: var(--opening);
+  --color-letterbox: var(--letterbox);
+  --color-globe-marker: var(--globe-marker);
+  --color-terminal: var(--terminal);
+  --color-terminal-foreground: var(--terminal-foreground);
+  --color-terminal-bar: var(--terminal-bar);
+  --color-terminal-prompt: var(--terminal-prompt);
+  --color-terminal-path: var(--terminal-path);
+  --shadow-terminal: var(--terminal-glow);
+  --color-nav: var(--nav);
+  --color-nav-foreground: var(--nav-foreground);
+  --color-nav-border: var(--nav-border);
+  --color-nav-hover: var(--nav-hover);
+  --shadow-nav: var(--nav-glow);
+  --color-terminal-border: var(--terminal-border);
+  --color-terminal-red: var(--terminal-red);
+  --color-terminal-yellow: var(--terminal-yellow);
+  --color-terminal-green: var(--terminal-green);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --shadow-soft: var(--shadow-soft);
+  --shadow-lift: var(--shadow-lift);
+  --animate-blink-cursor: blink-cursor 1.2s step-end infinite;
+  @keyframes blink-cursor {
+  0%, 49% {
+    opacity: 1;
+    }
+  50%, 100% {
+    opacity: 0;
+    }
+  }
+}
+
+/* "Ship it." palette: calm pastel sky, white, warm sand, one teal accent. */
+:root {
+  --radius: 0.875rem;
+  --background: oklch(0.975 0.008 225);
+  --foreground: oklch(0.27 0.035 240);
+  --card: oklch(0.993 0.003 90);
+  --card-foreground: oklch(0.27 0.035 240);
+  --popover: oklch(0.993 0.003 90);
+  --popover-foreground: oklch(0.27 0.035 240);
+  --primary: oklch(0.58 0.095 185);
+  --primary-foreground: oklch(0.99 0.004 185);
+  --secondary: oklch(0.935 0.03 80);
+  --secondary-foreground: oklch(0.32 0.04 60);
+  --muted: oklch(0.95 0.012 225);
+  --muted-foreground: oklch(0.49 0.03 240);
+  --accent: oklch(0.94 0.03 190);
+  --accent-foreground: oklch(0.36 0.06 190);
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.984 0.003 247.858);
+  --border: oklch(0.9 0.014 225);
+  --input: oklch(0.9 0.014 225);
+  --ring: oklch(0.58 0.095 185);
+  --sky: oklch(0.915 0.03 228);
+  --sand: oklch(0.925 0.035 80);
+  --glass: oklch(0.99 0.004 225 / 0.62);
+  --glass-border: oklch(1 0 0 / 0.75);
+  --success: oklch(0.74 0.12 155);
+  --opening: oklch(1 0 0);
+  --letterbox: oklch(0.2 0.025 240);
+  --globe-marker: oklch(0.57 0.15 265);
+  --vignette: oklch(0.22 0.03 240 / 0.38);
+  --terminal: oklch(0.2 0.07 340); /* Ubuntu aubergine #300a24 */
+  --terminal-bar: oklch(0.26 0.02 280); /* title bar #1e1e2e-ish */
+  --terminal-foreground: oklch(0.94 0.01 225);
+  --terminal-border: oklch(0.38 0.08 340);
+  --terminal-prompt: oklch(0.78 0.17 135);
+  --terminal-path: oklch(0.68 0.12 255);
+  --terminal-glow: 0 0 0 1px oklch(0.45 0.1 340 / 0.5), 0 30px 70px -30px oklch(0.3 0.12 340 / 0.65);
+  --nav: oklch(0.2 0.025 240 / 0.82);
+  --nav-foreground: oklch(0.97 0.005 225);
+  --nav-border: oklch(1 0 0 / 0.2);
+  --nav-hover: oklch(1 0 0 / 0.12);
+  --nav-glow: 0 0 20px oklch(0 0 0 / 0.5);
+  --terminal-red: oklch(0.7 0.14 25);
+  --terminal-yellow: oklch(0.84 0.13 85);
+  --terminal-green: oklch(0.76 0.14 150);
+  --shadow-soft: 0 1px 2px oklch(0.4 0.04 240 / 0.06), 0 8px 24px -12px oklch(0.4 0.04 240 / 0.18);
+  --shadow-lift: 0 2px 6px oklch(0.4 0.04 240 / 0.06), 0 22px 44px -22px oklch(0.4 0.05 230 / 0.32);
+  --gradient-sky: linear-gradient(180deg, oklch(0.9 0.035 228) 0%, oklch(0.95 0.02 225) 55%, oklch(0.93 0.035 80) 100%);
+  --gradient-veil: linear-gradient(90deg, oklch(0.975 0.008 225 / 0.86) 0%, oklch(0.975 0.008 225 / 0.45) 38%, oklch(0.975 0.008 225 / 0) 64%);
+  --gradient-veil-mobile: linear-gradient(0deg, oklch(0.975 0.008 225 / 0.92) 0%, oklch(0.975 0.008 225 / 0.55) 40%, oklch(0.975 0.008 225 / 0) 70%);
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --sidebar: oklch(0.984 0.003 247.858);
+  --sidebar-foreground: oklch(0.129 0.042 264.695);
+  --sidebar-primary: oklch(0.208 0.042 265.755);
+  --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
+  --sidebar-accent: oklch(0.968 0.007 247.896);
+  --sidebar-accent-foreground: oklch(0.208 0.042 265.755);
+  --sidebar-border: oklch(0.929 0.013 255.508);
+  --sidebar-ring: oklch(0.704 0.04 256.788);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  section[id] {
+    scroll-margin-top: 5rem;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-ring);
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@utility bg-sky-gradient {
+  background-image: var(--gradient-sky);
+}
+@utility bg-veil {
+  background-image: var(--gradient-veil-mobile);
+  @media (min-width: 768px) {
+    background-image: var(--gradient-veil);
+  }
+}
+@utility glass-panel {
+  background-color: var(--glass);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(14px) saturate(1.2);
+  -webkit-backdrop-filter: blur(14px) saturate(1.2);
+}
+/* Inside the dark terminal card, muted text needs a lighter tone. */
+@utility terminal-scope {
+  --muted-foreground: oklch(0.74 0.025 225);
+}
+/* ── Opening stage: values written per frame by the master clock as CSS variables ── */
+@utility stage-vars {
+  --lb: 0;
+  --dof: 0;
+  --vig: 0;
+  --cloud: 0;
+  --cloudgrow: 0;
+  --story: 1;
+  /* 2.39:1 bars, kept within sensible limits on very wide or portrait screens */
+  --lbh: clamp(44px, calc((100svh - 100vw / 2.39) / 2), 12svh);
+}
+@utility stage-bar {
+  height: var(--lbh);
+  background-color: var(--color-letterbox);
+  will-change: transform;
+}
+@utility stage-bar-top {
+  transform: translateY(calc((1 - var(--lb)) * -101%));
+}
+@utility stage-bar-bottom {
+  transform: translateY(calc((1 - var(--lb)) * 101%));
+}
+@utility stage-caption {
+  bottom: max(1.25rem, calc(var(--lbh) / 2));
+  transform: translateY(50%);
+}
+@utility stage-vignette {
+  opacity: var(--vig);
+  background-image: radial-gradient(ellipse 75% 70% at 50% 50%, transparent 55%, var(--vignette) 100%);
+}
+@utility stage-dof {
+  opacity: var(--dof);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  mask-image: radial-gradient(ellipse 46% 44% at 50% 50%, transparent 55%, black 100%);
+  -webkit-mask-image: radial-gradient(ellipse 46% 44% at 50% 50%, transparent 55%, black 100%);
+}
+@utility stage-cloud {
+  opacity: min(1, calc(var(--cloud) * 1.6));
+}
+@utility stage-cloud-blob {
+  position: absolute;
+  border-radius: 9999px;
+  translate: -50% -50%;
+  scale: calc(0.5 + var(--cloudgrow) * 2.6);
+  background-image: radial-gradient(circle, var(--color-opening) 0%, var(--color-opening) 38%, transparent 70%);
+  filter: blur(12px);
+}
+
+@keyframes ping-soft {
+  0% {
+    transform: scale(0.6);
+    opacity: 0.9;
+  }
+  100% {
+    transform: scale(2.2);
+    opacity: 0;
+  }
+}
+@utility animate-ping-soft {
+  animation: ping-soft 1.3s cubic-bezier(0.2, 0.7, 0.2, 1) infinite;
+}
+
+@utility kicker {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+}
+
+@keyframes resolve-in {
+  from {
+    opacity: 0;
+    filter: blur(8px);
+    letter-spacing: 0.28em;
+  }
+  to {
+    opacity: 1;
+    filter: blur(0);
+    letter-spacing: 0.02em;
+  }
+}
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes pulse-soft {
+  0%,
+  100% {
+    opacity: 0.45;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+@utility animate-resolve {
+  animation: resolve-in 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+@utility animate-rise {
+  animation: rise-in 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+@utility animate-pulse-soft {
+  animation: pulse-soft 1.6s ease-in-out infinite;
+}
+
+@keyframes caret-blink { 0%, 49% { opacity: 1; } 50%, 100% { opacity: 0; } }
+@utility animate-caret { animation: caret-blink 1s step-end infinite; }
