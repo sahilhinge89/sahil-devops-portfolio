@@ -40,7 +40,7 @@ export function HeroCopy() {
           </a>
         </Button>
         <Button asChild variant="glass" size="pill">
-          <a href={config.cvUrl} download>
+          <a href={config.cvUrl} download="Sahil_Hinge_CV.pdf">
             <Download /> Download CV
           </a>
         </Button>
@@ -420,6 +420,7 @@ export function Experience() {
               <p className="mt-1 break-words font-mono text-xs font-semibold text-primary">
                 {e.org} | {e.period}
               </p>
+              <p className="mt-1 text-sm font-medium text-foreground/80">Project: {e.project}</p>
               <ul className="mt-4 list-disc space-y-1.5 pl-4">
                 {e.points.map((pt, k) => (
                   <li key={k} className="text-sm leading-relaxed">

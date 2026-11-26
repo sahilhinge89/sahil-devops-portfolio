@@ -89,7 +89,7 @@ export const config = {
       liveUrl: "",
     },
     {
-      title: "EyeView v2",
+      title: "EyeView – AI-Powered Camera System",
       featured: false,
       summary:
         "AI-powered real-time violence detection and alert system pairing a Python/Flask inference backend with a React monitoring frontend for public safety.",
@@ -98,7 +98,7 @@ export const config = {
       liveUrl: "",
     },
     {
-      title: "FileUploadSystem",
+      title: "CI/CD and DevSecOps Pipeline",
       featured: false,
       summary:
         "Containerized full-stack media upload service built with React, Node.js, and Express, storing files in Amazon S3 (AWS SDK v3) and metadata in MongoDB.",
@@ -107,7 +107,7 @@ export const config = {
       liveUrl: "",
     },
     {
-      title: "Netflix Clone",
+      title: "Dockerized Three-Tier Web Application",
       featured: false,
       summary:
         "Responsive Netflix-inspired streaming web interface with interactive content rows, category browsing, and media preview layout.",
@@ -122,7 +122,7 @@ export const config = {
       role: "Freelance Full-Stack DevOps Engineer",
       org: "DoesntMatterPrivateLimited",
       period: "Freelance Project",
-      project: "StudyKaro",
+      project: "StudyKaro (EdTech Learning Platform)",
       points: [
         "Containerized the React frontend (multi-stage build on unprivileged NGINX) and the Node.js backend with Docker.",
         "Built a Jenkins pipeline that builds Docker images, publishes versioned tags to Docker Hub and creates Git version tags.",
