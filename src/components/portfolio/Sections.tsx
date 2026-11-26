@@ -88,8 +88,8 @@ const TERMINAL_COMMANDS = ["whoami", "cat core-stack.txt", "cat learning.txt"] a
 const INTRO_TEXT =
   "Hi, I'm Sahil — a Full-Stack DevOps Engineer who builds applications end-to-end, automates infrastructure, and turns code into reliable, production-ready software.";
 
-const CORE_TECHNOLOGIES = ["Git", "Bash", "Linux", "AWS", "Docker", "Kubernetes", "Argo CD"] as const;
-const CURRENTLY_LEARNING = ["Terraform", "Ansible", "Grafana", "Prometheus"] as const;
+const CORE_TECHNOLOGIES = ["Git", "Bash", "Linux", "AWS", "Docker", "Kubernetes"] as const;
+const CURRENTLY_LEARNING = ["Terraform", "Ansible", "Grafana", "Prometheus", "Argo CD"] as const;
 
 interface TermState {
   activeCmd: number;
