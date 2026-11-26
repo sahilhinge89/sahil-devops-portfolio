@@ -98,7 +98,7 @@ export const config = {
       liveUrl: "",
     },
     {
-      title: "CI/CD and DevSecOps Pipeline",
+      title: "Dockerized Three-Tier Web Application",
       featured: false,
       summary:
         "Containerized full-stack media upload service built with React, Node.js, and Express, storing files in Amazon S3 (AWS SDK v3) and metadata in MongoDB.",
@@ -107,7 +107,7 @@ export const config = {
       liveUrl: "",
     },
     {
-      title: "Dockerized Three-Tier Web Application",
+      title: "CI/CD and DevSecOps Pipeline",
       featured: false,
       summary:
         "Responsive Netflix-inspired streaming web interface with interactive content rows, category browsing, and media preview layout.",
